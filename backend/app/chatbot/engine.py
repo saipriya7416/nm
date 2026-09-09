@@ -253,6 +253,28 @@ class RestaurantChatbotEngine:
         session["active_intent"] = active_intent
         session["last_intent"] = active_intent
 
+        # Step 4: Semantic RAG Memory & Tool / API Integration
+        from app.chatbot.tool_router import tool_router
+        from app.chatbot.rag_memory import rag_memory
+
+        current_topic = intent_data.get("topic") or active_intent.lower()
+        rag_context = rag_memory.retrieve_context(cleaned_msg, session_id=session_id)
+        session["rag_context"] = rag_context
+
+        if primary_intent == "PREFERENCE_SHARING" or "istam" in cleaned_msg or "like" in cleaned_msg:
+            rag_memory.add_user_memory(session_id, message[:120])
+
+        # Route to External Tools (Web, Sports, Restaurant, Reservation, Music)
+        tool_result = tool_router.route_and_execute(
+            intent=active_intent,
+            topic=current_topic,
+            user_msg=message,
+            language=active_language,
+            db_session=db
+        )
+        if tool_result:
+            session["last_tool_result"] = tool_result
+
         def _set_activity(name: str):
             session["current_activity"] = name
             session["last_activity_intent"] = active_intent

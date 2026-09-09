@@ -34,6 +34,8 @@ class SemanticIntentDetector:
         "em undhi menu lo", "menu chupinchu", "em baguntundi tinu", "em tintavu",
         "em tintam", "naaku em kavali ante food", "rice kavali", "curry kavali",
         "dosa kavali", "idli kavali", "vada kavali", "upma kavali",
+        "nearby restaurants suggest cheyyi", "restaurant suggest cheyyi", "restaurants suggest cheyyi",
+        "nearby restaurant", "restaurant kavali", "restaurants kavali",
     ]
 
     TELUGU_GAME = [
@@ -109,6 +111,7 @@ class SemanticIntentDetector:
         "lunch", "dinner", "breakfast", "brunch",
         "vegetarian", "vegan", "spicy", "mild", "gluten free",
         "treat myself", "comfort food", "reward", "celebrate with food",
+        "restaurant", "restaurants", "nearby restaurant", "nearby restaurants", "hotel", "hotels",
         "బిర్యానీ", "ఆహారం", "టిఫిన్", "భోజనం", "ఆర్డర్", "తినాలి", "మెనూ", "ఫుడ్",
     ]
 
