@@ -1,0 +1,14 @@
+from fastapi import APIRouter
+from app.auth import router as auth_router
+from app.menu import router as menu_router
+from app.bookings import router as bookings_router
+from app.orders import router as orders_router
+from app.chatbot import router as chatbot_router
+
+router = APIRouter()
+
+router.include_router(auth_router, prefix="/auth", tags=["auth"])
+router.include_router(menu_router, prefix="/menu", tags=["menu"])
+router.include_router(bookings_router, prefix="/bookings", tags=["bookings"])
+router.include_router(orders_router, prefix="/orders", tags=["orders"])
+router.include_router(chatbot_router, prefix="/chat", tags=["chatbot"])

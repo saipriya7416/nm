@@ -1,0 +1,12 @@
+FastAPI
+uvicorn
+psycopg2-binary
+python-dotenv
+pydantic
+transformers
+torch
+requests
+bcrypt
+jwt
+sqlalchemy
+alembic
