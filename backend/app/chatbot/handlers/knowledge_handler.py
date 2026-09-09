@@ -1059,7 +1059,7 @@ class KnowledgeHandler:
 
         # Hugging Face LLM Model Generation (if configured)
         hf_reply = hf_client.generate_response(raw_msg, session.get("history", []), active_language=active_language,
-+            language=language, script=script, style=style)
+            language=language, script=script, style=style)
         if hf_reply:
             session["last_topic"] = {"subject": cleaned[:30], "category": "general"}
             return {

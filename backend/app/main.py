@@ -31,11 +31,23 @@ app.include_router(bookings.router, prefix="/bookings", tags=["Bookings"])
 app.include_router(orders.router, prefix="/orders", tags=["Orders"])
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 
+from fastapi.responses import HTMLResponse
+import os
+
+@app.get("/portal", response_class=HTMLResponse)
+async def portal():
+    portal_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend", "public", "portal.html")
+    if os.path.exists(portal_path):
+        with open(portal_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return "<h1>Portal file not found</h1>"
+
 @app.get("/")
 async def root():
     return {
         "status": "online",
         "restaurant": "Gourmet Haven",
         "message": "Welcome to Gourmet Haven AI Assistant API!",
-        "docs": "/docs"
+        "docs": "/docs",
+        "portal": "/portal"
     }

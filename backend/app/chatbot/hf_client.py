@@ -866,7 +866,7 @@ class HuggingFaceClient:
             parts.append("<|assistant|>\n")
             return "\n".join(parts)
 
-     def generate_response(
+    def generate_response(
         self,
         user_message: str,
         conversation_history: Optional[List[Dict[str, Any]]] = None,
@@ -939,19 +939,6 @@ class HuggingFaceClient:
             # Add additional languages as needed
         }
         return fallbacks.get(language.lower(), fallbacks["english"])
-        if not token:
-            return None
-
-            active_language, language, script, style
-        )
-        if chat_reply:
-            return chat_reply
-
-        # Method 2: Fallback to model-templated text generation
-        return self._call_text_generation(
-            user_message, conversation_history, token, max_new_tokens, temperature,
-            active_language, language, script, style
-        )
 
     def _call_chat_completions(
         self,

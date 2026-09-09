@@ -466,7 +466,7 @@ class ConversationHandler:
         # 5. LLM-powered natural response for open-ended conversation & continuity
         from app.chatbot.hf_client import hf_client
         hf_reply = hf_client.generate_response(msg, session.get("history", []), active_language=active_language,
-+            language=language, script=script, style=style)
+            language=language, script=script, style=style)
         if hf_reply:
             return {
                 "message": hf_reply,
